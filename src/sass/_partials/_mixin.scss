@@ -1,0 +1,94 @@
+@mixin breakpoint-up($name) {
+  $min: breakpoint-min($name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($name) {
+  $max: breakpoint-max($name);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($lower, $upper) {
+  $min: breakpoint-min($lower);
+  $max: breakpoint-max($upper);
+
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include breakpoint-up($lower) {
+      @content;
+    }
+  } @else if $min == null {
+    @include breakpoint-down($upper) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-only($name) {
+  $min: breakpoint-min($name);
+  $max: breakpoint-max($name);
+
+  @if $min != null and $max !=null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include breakpoint-up($name) {
+      @content;
+    }
+  } @else if $min == null {
+    @include breakpoint-down($name) {
+      @content;
+    }
+  }
+}
+
+// 先頭行だけ `line-height` の上スペースを取り除く
+@mixin line-height-crop($line-height) {
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+  }
+}
+
+// 要素数が n 個以上の各要素に適用される
+@mixin nth-or-more($n) {
+  &:first-child:nth-last-child(n + #{$n}),
+  &:first-child:nth-last-child(n + #{$n}) ~ & {
+    @content;
+  }
+}
+
+// 要素数が n 個以下の各要素に適用される
+@mixin nth-or-less($n) {
+  &:first-child:nth-last-child(-n + #{$n}),
+  &:first-child:nth-last-child(-n + #{$n}) ~ & {
+    @content;
+  }
+}
+
+// 要素数が n から m までの各要素に適用される
+@mixin nth-between($n, $m) {
+  &:first-child:nth-last-child(n + #{$n}):nth-last-child(-n + #{$m}),
+  &:first-child:nth-last-child(n + #{$n}):nth-last-child(-n + #{$m}) ~ & {
+    @content;
+  }
+}
