@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "webpack --mode=development & npm run serve",
     "build": "webpack --mode=production",
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "lint:js": "eslint 'src/**/*.js'",
+    "format:js": "eslint --fix 'src/**/*.js'"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -15,6 +17,7 @@
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
+    "eslint": "^6.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
