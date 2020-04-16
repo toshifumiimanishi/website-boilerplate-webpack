@@ -1,2 +1,2 @@
-import '../sass/main.scss';
-import '@babel/polyfill';
+import '../sass/main.scss'
+import '@babel/polyfill'
