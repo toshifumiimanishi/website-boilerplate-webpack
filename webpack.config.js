@@ -1,11 +1,13 @@
+const path = require('path');
+
 module.exports = (env, argv) => {
   const MODE = argv.mode || 'development';
   const enabledSourceMap = MODE === 'development';
   const config = {
     mode: MODE,
-    entry: './src/js/entry.js',
+    entry: './src/js/entry.ts',
     output: {
-      path: `${__dirname}/htdocs/js`,
+      path: path.resolve(__dirname, 'htdocs/js'),
       filename: 'main.js'
     },
     module: {
@@ -59,8 +61,16 @@ module.exports = (env, argv) => {
               }
             }
           ]
+        },
+        {
+          test: /\.tsx?$/,
+          use: 'ts-loader',
+          exclude: '/node_modules/'
         }
       ]
+    },
+    resolve: {
+      extensions: [ '.tsx', '.ts', '.js' ],
     },
     devServer: {
       contentBase: 'htdocs',
