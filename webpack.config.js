@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
     entry: './src/js/entry.ts',
     output: {
       path: path.resolve(__dirname, 'htdocs/js'),
+      publicPath: '/js/',
       filename: 'main.js'
     },
     module: {
@@ -73,9 +74,8 @@ module.exports = (env, argv) => {
       extensions: [ '.tsx', '.ts', '.js' ],
     },
     devServer: {
-      contentBase: 'htdocs',
-      open: false
-    }
+      contentBase: path.join(__dirname, 'htdocs'),
+    },
   }
 
   return config;
