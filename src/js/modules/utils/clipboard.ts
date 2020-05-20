@@ -9,7 +9,7 @@ export const clipboard = (() => {
     style.left = '-100%'
 
     document.body.appendChild(tempElm)
-    document.getSelection().selectAllChildren(tempElm)
+    document.getSelection()?.selectAllChildren(tempElm)
     document.execCommand('copy')
     document.body.removeChild(tempElm)
   }
