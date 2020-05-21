@@ -7,13 +7,15 @@
     "dev": "webpack --mode=development & npm run serve",
     "build": "webpack --mode=production",
     "serve": "webpack-dev-server",
-    "lint:js": "eslint 'src/**/*.js'",
-    "format:js": "eslint --fix 'src/**/*.js'"
+    "lint:js": "eslint 'src/**/*.ts'",
+    "format:js": "eslint --fix 'src/**/*.ts'"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
