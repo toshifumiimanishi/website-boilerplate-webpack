@@ -1,3 +1,9 @@
+## 1.1.1
+
+### :house: Internal
+
+- JetBrains 製 IDE 用ファイル追跡無視
+
 ## 1.1.0
 
 ### :rocket: Features
